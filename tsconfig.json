@@ -4,10 +4,11 @@
     "module": "commonjs",
     "strict": true,
     "esModuleInterop": true,
-    "skipLibCheck": true, // Это поможет избежать ошибок с типами библиотек
+    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "outDir": "./dist" // добавь эту строку
   },
   "include": ["src/**/*.ts"]
 }

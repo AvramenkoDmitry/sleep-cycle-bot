@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id          Int          @id @default(autoincrement())
+  telegramId  Int          @unique
+  cycleCount  Int?
+  sleepRecords SleepRecord[] @relation("UserSleepRecords") // Добавляем название связи
+}
+
+model SleepRecord {
+  id         Int      @id @default(autoincrement())
+  user       User     @relation("UserSleepRecords", fields: [userId], references: [id]) // Обратная связь с именем
+  userId     Int
+  cycleCount Int
+  startTime  DateTime
+  wakeUpTime DateTime
+  confirmed  Boolean  @default(false)
+}
